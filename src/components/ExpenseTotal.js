@@ -3,13 +3,14 @@ import { AppContext } from '../context/AppContext';
 
 const ExpenseTotal = () => {
  
-    const { expenses } = useContext(AppContext);
+    const { expenses,currency } = useContext(AppContext);
+   
     const totalExpenses = expenses.reduce ((total, item)=>{
         return (total += item.cost);
     },0);
     return (
 		<div className='alert alert-primary'>
-			<span> Expenses: £{totalExpenses}</span>
+			<span> Expenses: {currency}{totalExpenses}</span>
 		</div>
         );
 };

@@ -2,21 +2,22 @@ import React, {useContext} from 'react';
 import {AppContext} from '../context/AppContext';
 const Budget = () => {
     const {budget,dispatch} = useContext(AppContext);
-    const {expenses} = useContext(AppContext);
+    const {expenses,currency} = useContext(AppContext);
     const totalExpenses = expenses.reduce ((total, item)=>{
         return (total += item.cost);
     },0);
     return (
         <div className='alert alert-secondary'>
 
-        <span>Budget: £ 
+        <span>Budget: {currency} 
         <input
-						required='required'
+						
+                        required='required'
 						type='number'
                         step = "10"
 						id='budget'
 						value={budget}
-						style={{ marginLeft: '2rem' , size: 10}}
+						style={{ marginLeft: '2rem' , size: 10,width:100}}
 						onChange={(event) => {
                           if (event.target.value < totalExpenses)
                            {
